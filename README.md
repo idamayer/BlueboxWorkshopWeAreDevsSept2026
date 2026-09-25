@@ -18,15 +18,14 @@ make down
 
 ### OTel
 
-If you want OTel, use:
+Use the Bluebox template as the starting point:
 
 ```bash
-# Paste your values — the endpoint can also be fetched by the CLI
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://<your-endpoint-from-bluebox-setup>"
-
-# Paste the full header value from Bluebox Setup (do not include angle brackets)
-export OTEL_EXPORTER_OTLP_HEADERS="<header value from Bluebox Setup>"
+cp .env.otel.bluebox-template .env.otel
+# then fill in the Bluebox endpoint and Authorization header in .env.otel
 
 # Start the app (pulls images, waits for readiness)
 make up
 ```
+
+The repo keeps the local `.env.otel` and `.bluebox/` state out of git so the ingest credentials stay outside the repository.
